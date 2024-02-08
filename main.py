@@ -20,12 +20,12 @@ class Window(QMainWindow):
         address = self.input_address.text()
         longitude = self.input_long.text()
         latitude = self.input_width.text()
-        image_map(str(self.delta), adress=address, lon=longitude, lat=latitude, up=self.up, r=self.r)
         try:
+            image_map(str(self.delta), adress=address, lon=longitude, lat=latitude, up=self.up, r=self.r)
             self.pixmap = QPixmap('map.png')
             self.label_map.setPixmap(self.pixmap)
         except Exception:
-            pass
+            print('Вы не ввели данные для отображения карты')
 
     def keyPressEvent(self, event):
         print(event.key(), Qt.Key_Right, Qt.Key_Left)
