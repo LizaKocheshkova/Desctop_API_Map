@@ -13,12 +13,14 @@ class Window(QMainWindow):
         self.setWindowTitle('Приложение для Яндекс карт')
         self.btn_show_map.clicked.connect(self.show_map)
         self.delta = 0.002
+        self.up = 0
+        self.r = 0
 
     def show_map(self):
         address = self.input_address.text()
         longitude = self.input_long.text()
         latitude = self.input_width.text()
-        image_map(str(self.delta), adress=address, lon=longitude, lat=latitude)
+        image_map(str(self.delta), adress=address, lon=longitude, lat=latitude, up=self.up, r=self.r)
         try:
             self.pixmap = QPixmap('map.png')
             self.label_map.setPixmap(self.pixmap)
@@ -38,12 +40,20 @@ class Window(QMainWindow):
             self.show_map()
         if event.key() == Qt.Key_Up:
             print("Up")
+            self.up += 1
+            self.show_map()
         if event.key() == Qt.Key_Down:
             print("Down")
+            self.up -= 1
+            self.show_map()
         if event.key() == Qt.Key_Right:
             print("Right")
+            self.r += 1
+            self.show_map()
         if event.key() == Qt.Key_Left:
             print("Left")
+            self.r -= 1
+            self.show_map()
 
 
 if __name__ == '__main__':
