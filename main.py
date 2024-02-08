@@ -12,12 +12,13 @@ class Window(QMainWindow):
         uic.loadUi('win_map.ui', self)
         self.setWindowTitle('Приложение для Яндекс карт')
         self.btn_show_map.clicked.connect(self.show_map)
+        self.delta = 0.002
 
     def show_map(self):
         address = self.input_address.text()
         longitude = self.input_long.text()
         latitude = self.input_width.text()
-        image_map(adress=address, lon=longitude, lat=latitude)
+        image_map(str(self.delta), adress=address, lon=longitude, lat=latitude)
         try:
             self.pixmap = QPixmap('map.png')
             self.label_map.setPixmap(self.pixmap)
@@ -29,8 +30,13 @@ class Window(QMainWindow):
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp:
             print("PgUp")
+            self.delta += 0.001
+            self.show_map()
         if event.key() == Qt.Key_PageDown:
             print("PgDn")
+            if self.delta >= 0.001:
+                self.delta -= 0.001
+            self.show_map()
         if event.key() == Qt.Key_Up:
             print("Up")
         if event.key() == Qt.Key_Down:

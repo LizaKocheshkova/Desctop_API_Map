@@ -18,12 +18,12 @@ def geocode(adress):
         return toponym_coodrinates
 
 
-def image_map(adress=None, lon=None, lat=None):
+def image_map(delta, adress=None, lon=None, lat=None):
     if adress:
         toponym_coodrinates = geocode(adress)
         lon, lat = toponym_coodrinates.split(" ")
 
-    delta = "0.002"
+    # delta = "0.002"
     params = {
         "ll": ",".join([lon, lat]),
         "spn": ",".join([delta, delta]),
