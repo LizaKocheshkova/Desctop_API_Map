@@ -1,2 +1,4 @@
 lable_map(QLable) - поле отображения карты, размеры: 200*200
 input_adress(QLineEdit) - поле для ввода адреса поиска
+input_l(QLineEdit) - поле для ввода долготы
+input_h(QLineEdit) - поле для ввода широты
