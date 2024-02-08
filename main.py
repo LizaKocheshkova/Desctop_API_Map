@@ -25,17 +25,15 @@ class Window(QMainWindow):
         except Exception:
             pass
 
-
-
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp:
             print("PgUp")
-            self.delta += 0.001
+            self.delta += 0.003
             self.show_map()
         if event.key() == Qt.Key_PageDown:
             print("PgDn")
-            if self.delta >= 0.001:
-                self.delta -= 0.001
+            if self.delta > 0.003:
+                self.delta -= 0.003
             self.show_map()
         if event.key() == Qt.Key_Up:
             print("Up")
