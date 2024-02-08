@@ -8,6 +8,7 @@ from API.api import *
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
+        uic.loadUi('win_map.ui', self)
         self.setWindowTitle('Приложение для Яндекс карт')
 
 
