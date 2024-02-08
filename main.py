@@ -40,19 +40,19 @@ class Window(QMainWindow):
             self.show_map()
         if event.key() == Qt.Key_Up:
             print("Up")
-            self.up += 1
+            self.up += self.delta
             self.show_map()
         if event.key() == Qt.Key_Down:
             print("Down")
-            self.up -= 1
+            self.up -= self.delta
             self.show_map()
         if event.key() == Qt.Key_Right:
             print("Right")
-            self.r += 1
+            self.r += self.delta
             self.show_map()
         if event.key() == Qt.Key_Left:
             print("Left")
-            self.r -= 1
+            self.r -= self.delta
             self.show_map()
 
 
