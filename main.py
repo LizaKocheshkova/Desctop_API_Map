@@ -7,6 +7,7 @@ from PyQt5 import uic
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.setWindowTitle('Приложение для Яндекс карт')
 
 
 if __name__ == '__main__':
