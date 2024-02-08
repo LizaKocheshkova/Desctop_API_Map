@@ -1,4 +1,4 @@
-import requests
+from PyQt5.QtGui import QPixmap
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic
@@ -17,7 +17,14 @@ class Window(QMainWindow):
         address = self.input_address.text()
         longitude = self.input_long.text()
         latitude = self.input_width.text()
-        pass
+        image_map(adress=address, lon=longitude, lat=latitude)
+        try:
+            self.pixmap = QPixmap('map.png')
+            self.label_map.setPixmap(self.pixmap)
+        except Exception:
+            pass
+
+
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp:
