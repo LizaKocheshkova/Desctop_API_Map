@@ -26,6 +26,7 @@ class Window(QMainWindow):
             pass
 
     def keyPressEvent(self, event):
+        print(event.key(), Qt.Key_Right, Qt.Key_Left)
         if event.key() == Qt.Key_PageUp:
             print("PgUp")
             self.delta += 0.003
