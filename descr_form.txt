@@ -3,3 +3,4 @@ input_address(QLineEdit) - поле для ввода адреса поиска
 input_long(QLineEdit) - поле для ввода долготы
 input_width(QLineEdit) - поле для ввода широты
 label(QLabel) - дополнительное поле
+btn_show_map(QPushButton) - кнопка показать карту
