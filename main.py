@@ -14,14 +14,22 @@ class Window(QMainWindow):
         self.btn_show_map.clicked.connect(self.show_map)
         self.btn_input_data.clicked.connect(self.show_win_input_data)
         self.delta = 0.002
-        self.up = 0
-        self.r = 0
+        self.address = ''
+        self.long = '0'
+        self.width = '0'
 
-    def show_map(self):  # тут нужно переделать, получить данные из диалогового окна для показа карты
-        address = self.input_address.text()
-        longitude = self.input_long.text()  # эти три строки скорее всего поменяются или уберутся
-        latitude = self.input_width.text()
-        image_map(str(self.delta), address=address, lon=longitude, lat=latitude, up=self.up, r=self.r)
+    def get_input_data(self):
+        self.address = self.input_address.text()
+        self.long = self.input_long.text()
+        self.width = self.input_width.text()
+        self.show_map()
+        self.address = ''
+        self.input_address.clear()
+        self.input_long.clear()
+        self.input_width.clear()
+
+    def show_map(self):
+        self.long, self.width = image_map(str(self.delta), address=self.address, lon=self.long, lat=self.width)
         try:
             self.pixmap = QPixmap('map.png')
             self.label_map.setPixmap(self.pixmap)
@@ -38,29 +46,23 @@ class Window(QMainWindow):
     def keyPressEvent(self, event):
         print(event.key(), Qt.Key_Right, Qt.Key_Left)
         if event.key() == Qt.Key_PageUp:
-            print("PgUp")
             self.delta += 0.003
             self.show_map()
         if event.key() == Qt.Key_PageDown:
-            print("PgDn")
             if self.delta > 0.003:
                 self.delta -= 0.003
             self.show_map()
         if event.key() == Qt.Key_Up:
-            print("Up")
-            self.up += self.delta
+            self.width = str(float(self.width) + self.delta)
             self.show_map()
         if event.key() == Qt.Key_Down:
-            print("Down")
-            self.up -= self.delta
+            self.width = str(float(self.width) - self.delta)
             self.show_map()
         if event.key() == Qt.Key_Right:
-            print("Right")
-            self.r += self.delta
+            self.long = str(float(self.long) + self.delta)
             self.show_map()
         if event.key() == Qt.Key_Left:
-            print("Left")
-            self.r -= self.delta
+            self.long = str(float(self.long) - self.delta)
             self.show_map()
 
 
@@ -73,9 +75,9 @@ class InputData(QDialog):
         self.buttonBox.rejected.connect(self.log_user_not)
 
     def input_data_ok(self):  # тут нужно доделать сохранение введенных данных для передачи их в функцию показа карты
-        address = self.input_address.text()
-        longitude = self.input_long.text()
-        latitude = self.input_width.text()
+        self.address = self.input_address.text()
+        self.long = self.input_long.text()
+        self.width = self.input_width.text()
 
     def input_data_not(self):
         pass
