@@ -1,6 +1,7 @@
-label_map(QLabel) - поле отображения карты, размеры: 451*351
-input_address(QLineEdit) - поле для ввода адреса поиска
-input_long(QLineEdit) - поле для ввода долготы
-input_width(QLineEdit) - поле для ввода широты
+label_map(QLabel) - поле отображения карты, размеры: 511*421
+input_address(QLineEdit) - поле для ввода адреса поиска а диалоговом окне
+input_long(QLineEdit) - поле для ввода долготы в диалоговом окне
+input_width(QLineEdit) - поле для ввода широты в диалоговом окне
 label(QLabel) - дополнительное поле
 btn_show_map(QPushButton) - кнопка показать карту
+btn_input_data(QPushButton) - кнопка, вызывающая диалоговое окно ввода данных
