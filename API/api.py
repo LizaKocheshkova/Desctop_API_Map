@@ -19,7 +19,7 @@ def geocode(address):
 
 
 def image_map(delta, address=None, lon=None, lat=None, up=0, r=0):
-    if adress:
+    if address:
         toponym_coordinates = geocode(address)
         lon, lat = toponym_coordinates.split(" ")
 
