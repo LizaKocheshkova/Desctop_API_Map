@@ -35,5 +35,5 @@ def image_map(delta, address=None, lon=None, lat=None, up=0, r=0):
         with open(map_file, "wb") as file:
             file.write(response.content)
 
-    return lon, lat, delta
+    return lon, lat
 

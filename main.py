@@ -38,10 +38,10 @@ class Window(QMainWindow):
 
     def show_win_input_data(self):
         print('ok')
-        self.data = InputData()
+        self.data = InputData(self)
         self.data.show()
         if self.data.exec_() == QDialog.Accepted:
-            self.update_welcome()
+            print(self.address, self.long, self.width)
 
     def keyPressEvent(self, event):
         print(event.key(), Qt.Key_Right, Qt.Key_Left)
@@ -67,17 +67,18 @@ class Window(QMainWindow):
 
 
 class InputData(QDialog):
-    def __init__(self):
+    def __init__(self, main_win):
         super(InputData, self).__init__()
         uic.loadUi('input_data.ui', self)
         self.setWindowTitle('Ввод данных')
+        self.main_win = main_win
         self.buttonBox.accepted.connect(self.input_data_ok)
-        self.buttonBox.rejected.connect(self.log_user_not)
+        self.buttonBox.rejected.connect(self.input_data_not)
 
     def input_data_ok(self):  # тут нужно доделать сохранение введенных данных для передачи их в функцию показа карты
-        self.address = self.input_address.text()
-        self.long = self.input_long.text()
-        self.width = self.input_width.text()
+        self.main_win.address = self.input_address.text()
+        self.main_win.long = self.input_long.text()
+        self.main_win.width = self.input_width.text()
 
     def input_data_not(self):
         pass

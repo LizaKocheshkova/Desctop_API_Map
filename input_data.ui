@@ -65,7 +65,7 @@
     <string>Долгота</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_with">
+  <widget class="QLineEdit" name="input_width">
    <property name="geometry">
     <rect>
      <x>90</x>
