@@ -1,6 +1,6 @@
 from PyQt5.QtGui import QPixmap
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from API.api import *
